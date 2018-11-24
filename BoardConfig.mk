@@ -60,8 +60,8 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/whyred
-TARGET_KERNEL_CONFIG := whyred-perf_defconfig
-TARGET_KERNEL_CLANG_COMPILE := true
+PRODUCT_COPY_FILES += device/xiaomi/whyred/kernel:kernel
+PRODUCT_COPY_FILES += device/xiaomi/whyred/wlan.ko:$(TARGET_COPY_OUT_VENDOR)/lib/modules/qca_cld3/qca_cld3_wlan.ko
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
