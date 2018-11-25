@@ -64,6 +64,7 @@ on early-boot
     chown root audio /sys/kernel/boot_adsp/boot
 
 on boot
+    insmod /vendor/lib/modules/wlan.ko
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
