@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,39 +14,33 @@
 # limitations under the License.
 #
 
-# Release name
-PRODUCT_RELEASE_NAME := whyred
-
-# Inherit build target
-$(call inherit-product, build/target/product/embedded.mk)
-
-# Inherit from those products. Most specific first
+# Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Inherit from whyred device
 $(call inherit-product, device/xiaomi/whyred/device.mk)
 
-# Device identifier. This must come after all inclusions
-PRODUCT_NAME := lineage_whyred
-PRODUCT_DEVICE := whyred
-PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_BRAND := Xiaomi
-PRODUCT_FULL_TREBLE_OVERRIDE := true
+# Inherit some common Bootleggers stuff.
+$(call inherit-product, vendor/bootleggers/config/common_full_phone.mk)
 
-TARGET_VENDOR_PRODUCT_NAME := whyred
-TARGET_VENDOR_DEVICE_NAME := whyred
+# Device identifier. This must come after all inclusions
+TARGET_VENDOR := Xiaomi
+PRODUCT_DEVICE := whyred
+PRODUCT_NAME := bootleg_whyred
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MANUFACTURER := Xiaomi
+BOARD_VENDOR := Xiaomi
+
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="whyred-user 8.1.0 OPM1.171019.011 V9.5.11.0.OEIMIFA release-keys" \
-	TARGET_DEVICE="whyred" \
-	PRODUCT_NAME="whyred"
+    PRIVATE_BUILD_DESC="whyred-user 8.1.0 OPM1.171019.011 V9.5.13.0.OEIMIFA release-keys" \
+    TARGET_DEVICE="whyred" \
+    DEVICE_MAINTAINERS="Kabir"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := xiaomi/whyred/whyred:8.1.0/OPM1.171019.011/V9.5.11.0.OEIMIFA:user/release-keys
+BUILD_FINGERPRINT := xiaomi/whyred/whyred:8.1.0/OPM1.171019.011/V9.5.13.0.OEIMIFA:user/release-keys
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
-    ro.product.model
+ro.product.model
